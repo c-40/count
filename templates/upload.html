@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tree Counting Application</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 20px;
+            background-color: #f4f4f9;
+            color: #333;
+        }
+        h1 {
+            color: #4CAF50;
+        }
+        .container {
+            max-width: 800px;
+            margin: auto;
+            padding: 20px;
+            background: white;
+            border-radius: 8px;
+            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+        }
+        form {
+            margin-bottom: 20px;
+        }
+        input[type="file"] {
+            margin-bottom: 10px;
+        }
+        input[type="submit"] {
+            background-color: #4CAF50;
+            color: white;
+            border: none;
+            padding: 10px 20px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+            cursor: pointer;
+            border-radius: 4px;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            margin-top: 20px;
+        }
+        .result {
+            margin-top: 20px;
+            border-top: 2px solid #ddd;
+            padding-top: 10px;
+        }
+        .upload-section, .result-section {
+            margin-bottom: 30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Tree Counting Application</h1>
+
+        <!-- Upload Form -->
+        <div class="upload-section">
+            <h2>Upload Image for Tree Counting</h2>
+            <form action="/" method="post" enctype="multipart/form-data">
+                <input type="file" name="file" accept="image/*" required>
+                <input type="submit" value="Upload">
+            </form>
+        </div>
+
+        <!-- Result Display -->
+        {% if count is defined %}
+        <div class="result-section">
+            <h2>Tree Counting Result</h2>
+            <p>Estimated Tree Count: {{ count }}</p>
+            <img src="data:image/jpeg;base64,{{ image_data }}" alt="Marked Image">
+            <br>
+            <a href="/">Upload Another Image</a>
+        </div>
+        {% endif %}
+    </div>
+</body>
+</html>
